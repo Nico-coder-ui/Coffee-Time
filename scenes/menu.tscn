@@ -1,0 +1,592 @@
+[gd_scene load_steps=7 format=3 uid="uid://menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1"]
+[ext_resource type="FontFile" path="res://fonts/RacingFont.otf" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="btn_normal"]
+bg_color = Color(0.9, 0.25, 0.1, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.4, 0.15, 0.6)
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+skew = Vector2(-0.08, 0)
+
+[sub_resource type="StyleBoxFlat" id="btn_hover"]
+bg_color = Color(1.0, 0.35, 0.12, 1.0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.6, 0.2, 0.9)
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+skew = Vector2(-0.08, 0)
+
+[sub_resource type="StyleBoxFlat" id="btn_secondary"]
+bg_color = Color(0.15, 0.15, 0.2, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.4, 0.5, 0.5)
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+skew = Vector2(-0.08, 0)
+
+[sub_resource type="StyleBoxFlat" id="podium_bg"]
+bg_color = Color(0.08, 0.08, 0.12, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.25, 0.1, 0.4)
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.09, 1)
+
+[node name="StripeTop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+color = Color(0.9, 0.25, 0.1, 1)
+
+[node name="StripeBottom" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+grow_horizontal = 2
+color = Color(0.9, 0.25, 0.1, 1)
+
+[node name="ParticlesBackground" type="CPUParticles2D" parent="."]
+position = Vector2(576, 324)
+amount = 25
+lifetime = 4.0
+speed_scale = 0.8
+emission_shape = 3
+emission_rect_extents = Vector2(600, 400)
+direction = Vector2(-1, 0)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
+scale_amount_min = 1.0
+scale_amount_max = 3.0
+color = Color(1.0, 0.3, 0.1, 0.06)
+
+[node name="HBoxLayout" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="VBoxContainer" parent="HBoxLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+
+[node name="LeftMargin" type="MarginContainer" parent="HBoxLayout/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxMain" type="VBoxContainer" parent="HBoxLayout/LeftPanel/LeftMargin"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.15, 0.05, 0.7)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 68
+theme_override_fonts/font = ExtResource("2")
+text = "COFFEE TIME"
+horizontal_alignment = 0
+
+[node name="SubtitleLabel" type="Label" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2")
+text = "LIVRAISON EXPRESS"
+horizontal_alignment = 0
+
+[node name="Spacer" type="Control" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 58)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "> DEMARRER"
+
+[node name="SettingsButton" type="Button" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 50)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "PARAMETRES"
+
+[node name="HowToPlayButton" type="Button" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 42)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "COMMENT JOUER ?"
+
+[node name="QuitButton" type="Button" parent="HBoxLayout/LeftPanel/LeftMargin/VBoxMain/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 50)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "QUITTER"
+
+[node name="RightPanel" type="VBoxContainer" parent="HBoxLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="RightMargin" type="MarginContainer" parent="HBoxLayout/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+
+[node name="PodiumOuter" type="VBoxContainer" parent="HBoxLayout/RightPanel/RightMargin"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="PodiumPanel" type="PanelContainer" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("podium_bg")
+
+[node name="PodiumVBox" type="VBoxContainer" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PodiumTitle" type="Label" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel/PodiumVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.15, 0.05, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("2")
+text = "// MEILLEURS TEMPS //"
+horizontal_alignment = 1
+
+[node name="Separator" type="ColorRect" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel/PodiumVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.9, 0.25, 0.1, 0.5)
+
+[node name="Score1" type="Label" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel/PodiumVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2")
+text = "1.  ---"
+horizontal_alignment = 1
+
+[node name="Score2" type="Label" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel/PodiumVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.82, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2")
+text = "2.  ---"
+horizontal_alignment = 1
+
+[node name="Score3" type="Label" parent="HBoxLayout/RightPanel/RightMargin/PodiumOuter/PodiumPanel/PodiumVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.5, 0.25, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2")
+text = "3.  ---"
+horizontal_alignment = 1
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -370.0
+offset_right = 380.0
+offset_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.15, 0.05, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2")
+text = "PARAMETRES"
+horizontal_alignment = 1
+
+[node name="VolumeHBox" type="HBoxContainer" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="VolumeLabel" type="Label" parent="SettingsPanel/SettingsVBox/VolumeHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+text = "VOLUME :"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/SettingsVBox/VolumeHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+value = 80.0
+
+[node name="VolumeValue" type="Label" parent="SettingsPanel/SettingsVBox/VolumeHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 0)
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+text = "80%"
+horizontal_alignment = 1
+
+[node name="TimerSeparator" type="ColorRect" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.9, 0.25, 0.1, 0.4)
+
+[node name="TimerTitle" type="Label" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+text = "TIMERS"
+horizontal_alignment = 1
+
+[node name="PreCountdownHBox" type="HBoxContainer" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PreCountdownLabel" type="Label" parent="SettingsPanel/SettingsVBox/PreCountdownHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2")
+text = "PREPARATION :"
+
+[node name="PreCountdownSlider" type="HSlider" parent="SettingsPanel/SettingsVBox/PreCountdownHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 15.0
+step = 1.0
+value = 5.0
+
+[node name="PreCountdownValue" type="Label" parent="SettingsPanel/SettingsVBox/PreCountdownHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2")
+text = "5s"
+horizontal_alignment = 1
+
+[node name="MemorizeHBox" type="HBoxContainer" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="MemorizeLabel" type="Label" parent="SettingsPanel/SettingsVBox/MemorizeHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2")
+text = "MEMORISATION :"
+
+[node name="MemorizeSlider" type="HSlider" parent="SettingsPanel/SettingsVBox/MemorizeHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 5.0
+max_value = 60.0
+step = 1.0
+value = 15.0
+
+[node name="MemorizeValue" type="Label" parent="SettingsPanel/SettingsVBox/MemorizeHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(50, 0)
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2")
+text = "15s"
+horizontal_alignment = 1
+
+[node name="KeysSeparator" type="ColorRect" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.9, 0.25, 0.1, 0.4)
+
+[node name="KeysTitle" type="Label" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+text = "CONTROLES"
+horizontal_alignment = 1
+
+[node name="KeysScroll" type="ScrollContainer" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 220)
+
+[node name="KeysVBox" type="VBoxContainer" parent="SettingsPanel/SettingsVBox/KeysScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="BackButton" type="Button" parent="SettingsPanel/SettingsVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "< RETOUR"
+
+[node name="MapSelectPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -260.0
+offset_right = 380.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapSelectVBox" type="VBoxContainer" parent="MapSelectPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="MapTitle" type="Label" parent="MapSelectPanel/MapSelectVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.15, 0.05, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2")
+text = "CHOISIR UNE MAP"
+horizontal_alignment = 1
+
+[node name="MapSeparator" type="ColorRect" parent="MapSelectPanel/MapSelectVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.9, 0.25, 0.1, 0.4)
+
+[node name="MapScroll" type="ScrollContainer" parent="MapSelectPanel/MapSelectVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 340)
+
+[node name="MapListVBox" type="VBoxContainer" parent="MapSelectPanel/MapSelectVBox/MapScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MapBackButton" type="Button" parent="MapSelectPanel/MapSelectVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 48)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "< RETOUR"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4, 0.4, 0.45, 0.5)
+theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("2")
+text = ""
+horizontal_alignment = 1
+
+[node name="HowToPlayPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -240.0
+offset_right = 340.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HowToVBox" type="VBoxContainer" parent="HowToPlayPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="HowToTitle" type="Label" parent="HowToPlayPanel/HowToVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.15, 0.05, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("2")
+text = "COMMENT JOUER ?"
+horizontal_alignment = 1
+
+[node name="HowToSeparator" type="ColorRect" parent="HowToPlayPanel/HowToVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.9, 0.25, 0.1, 0.5)
+
+[node name="HowToText" type="RichTextLabel" parent="HowToPlayPanel/HowToVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 16
+theme_override_fonts/normal_font = ExtResource("2")
+bbcode_enabled = true
+text = "[color=#e64a19]1.[/color] MEMORISEZ LA CARTE\nRepérez le PNJ sur la map et mémorisez le chemin pour y arriver.\n\n[color=#e64a19]2.[/color] LIVREZ LE CAFE\nUne fois le décompte terminé, foncez livrer le café au PNJ le plus vite possible !\n\n[color=#e64a19]3.[/color] TOUR BONUS (DANS LE NOIR)\nAprès la livraison, refaites le trajet dans le noir avec un temps limité. Bonne chance !\n\n[color=#e64a19]ASTUCE :[/color] Utilisez le drift pour les virages serrés et le klaxon pour le style."
+
+[node name="HowToBackButton" type="Button" parent="HowToPlayPanel/HowToVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 44)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = SubResource("btn_secondary")
+theme_override_styles/hover = SubResource("btn_hover")
+text = "< RETOUR"
