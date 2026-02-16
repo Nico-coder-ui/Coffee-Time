@@ -10,6 +10,7 @@ mono_crash.*.json
 
 # Donnees utilisateur (scores, settings, keybinds)
 *.save
+export_presets.cfg
 
 # OS
 .nomedia
